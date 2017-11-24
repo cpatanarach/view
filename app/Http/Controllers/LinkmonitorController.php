@@ -191,7 +191,7 @@ class LinkmonitorController extends Controller
             $allProvince = City::where('city_name', 'LIKE', '%'.$data->search.'%')->get();
             return view('link.smart_monitor')->with('allProvince', $allProvince);
         }else{
-            return "Please contact System's Administrator";
+            return "Please contact System's Administrators";
         }
     }
 }
