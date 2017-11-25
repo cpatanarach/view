@@ -149,7 +149,7 @@
                             <li><a href="{{url('/login')}}">เข้าสู่ระบบ</a></li>
                         @else
                             <li class="dropdown dol-dropdown-user">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{Auth::user()->firstname}}</a>
                               <ul class="dropdown-menu dol-dropdown-user-menu">
                                 <li><a href="#">เปลี่ยนรหัสผ่าน</a></li>
                                 <li><a href="#">เปลี่ยนอีเมล</a></li>

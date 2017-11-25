@@ -8,6 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Oper's Login</div>
                 <div class="panel-body">
+                    @if(isset($tooManyAttempts)) {{$tooManyAttempts}} @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -27,9 +28,11 @@
                                 <input id="password" type="password" class="form-control" name="password" placeholder="รหัสผ่าน" required>
                             </div>
                         </div>
-                            @if ($errors->has('login'))
-                                <div class="col-md-6 col-md-offset-4 text-danger" style="padding: 0px;">
-                                    <strong>{{ $errors->first('login') }}</strong>
+                            @if (isset($errors))
+                                <div class="col-md-8 col-md-offset-4 text-danger" style="padding: 0px;">
+                                    @foreach ($errors->all() as $error)
+                                        <strong>{{ $error }}</strong>
+                                    @endforeach
                                 </div>
                             @endif
                         <div class="form-group">
