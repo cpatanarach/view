@@ -60,7 +60,7 @@
         <nav class="navbar-static-top oper-nav">
             <div class="container">
                 <img class="col-md-2 dol-title-logo" src="{{url('/resources/images/public/oper.png')}}"> 
-                <h2 class="col-md-10 text-left mouse-pointer">ฝ่ายปฏิบัติการคอมพิวเตอร์ สำนักเทคโนโลยีสารสนเทศ กรมที่ดิน</h2>
+                <h2 class="col-md-10 text-left mouse-pointer oper-title">ฝ่ายปฏิบัติการคอมพิวเตอร์ สำนักเทคโนโลยีสารสนเทศ กรมที่ดิน</h2>
                 <p class="col-md-10 text-muted oper-sub-title mouse-pointer">www.dol.go.th</p>
             </div>            
             <!-- Test NAV -->
