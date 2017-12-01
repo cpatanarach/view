@@ -11,16 +11,14 @@
            	<table class="table table-hover">
            		<!-- Header of Data -->
                 <tr class="text-center bg-info">
-                	<td class="col-md-3"><strong>จังหวัด</strong></td>
-                  <td class="col-md-3"><strong>SPEED</strong></td>
-                  <td class="col-md-3"><strong>ADMIN</strong></td>    
-                  <td class="col-md-3"><strong>โทรศัพท์</strong></td>
+                	<td class="col-md-4"><strong>จังหวัด</strong></td>
+                  <td class="col-md-4"><strong>ADMIN</strong></td>    
+                  <td class="col-md-4"><strong>โทรศัพท์</strong></td>
                 </tr> 
                 <!-- Source -->
                 @forelse($allProvince as $province)
                 	<tr class="text-centers">
                 		<td><a href="{{url('/linkCity')}}/{{$province->city_id}}">{{$province->city_name}}</a></td>
-                		<td><!--{{$province->linkData->first()->job_name}}-->16 Mbps.</td>
                 		<td>{{$province->cityAdmin->name_admin}} ({{$province->cityAdmin->status}})</td>
                 		<td>{{$province->cityAdmin->tel_admin}}
                 				@if(Auth::user()->level >= ADMIN)
@@ -35,4 +33,13 @@
        	</div>
    </div>
 </div>
+@endsection
+@section('script')
+  <script src="{{url('/resources/assets/js/main_mobile.js')}}"></script>
+  <script type="text/javascript">
+    if(isMobile()){
+      //If device is mobile
+
+    }
+  </script>
 @endsection

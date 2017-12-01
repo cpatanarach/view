@@ -108,5 +108,11 @@
             </div>
         </div>
         {!!csrf_field()!!}
+    <script src="{{url('/resources/assets/js/main_mobile.js')}}"></script>
+    <script type="text/javascript">
+        if(isMobile()){
+            window.location.replace("{{url('/home')}}");
+        }
+    </script>
     </body>
 </html>
