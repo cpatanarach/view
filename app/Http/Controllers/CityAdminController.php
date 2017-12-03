@@ -24,6 +24,7 @@ class CityAdminController extends Controller
     		$cityAdmin = CityAdmin::where('city_id', '=', $request->ref)->first();
     		$cityAdmin->name_admin = $request->name_admin;
     		$cityAdmin->tel_admin = $request->tel_admin;
+            $cityAdmin->tel_admin2 = $request->tel_admin2;
     		$cityAdmin->status = $request->status;
     		$cityAdmin->timestamps = false;
     		$cityAdmin->save();
