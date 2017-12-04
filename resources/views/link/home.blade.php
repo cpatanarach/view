@@ -26,7 +26,11 @@
                     </td>
 
                 		<td type="phone">
-                        <span data="0" style="display: none;">{{$province->cityAdmin->name_admin}}</span>
+                        <span data="0" style="display: none;padding-bottom: 5px;">{{$province->cityAdmin->name_admin}}
+                            @if(Auth::user()->level >= ADMIN)
+                              <a href="{{url('/cityAdmin/edit')}}/{{$province->cityAdmin->city_id}}" style="margin-left: 10px;"><i class="fa fa-edit"></i></a>
+                            @endif
+                        </span>
                         @if($province->cityAdmin->tel_admin != '-')
                           <a class="label-blank" href="tel:{{$province->cityAdmin->tel_admin}}">
                             <i class="fa fa-phone"></i>
@@ -65,7 +69,7 @@
         $('td[type=admin-header]').remove();
         $('td[type=admin]').remove();
 
-        $('td[type=phone] span[data=0]').css('display','inline-block');
+        $('td[type=phone] span[data=0]').css('display','block');
         $('td[type=phone-header]').text('ADMIN');
     }
   </script>
