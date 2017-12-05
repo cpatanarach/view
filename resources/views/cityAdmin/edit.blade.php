@@ -61,6 +61,7 @@
 @section('script')
     <!-- SCRIPT -->
     <script src="{{ url('/resources/assets/formhelper/bootstrap-formhelpers-phone.js') }}"></script>
+    <script src="{{url('/resources/assets/js/main_mobile.js')}}"></script>
     <script type="text/javascript">
     	//On Event Document Loaded
     	var name_admin = '';
@@ -94,5 +95,8 @@
     		//$('input[name=tel_admin]').val(tel[0].trim());
     		//$('input[name=tel_admin2]').val(tel[1].trim());
     	}
+      if(isMobile()){
+        $('#update').css('margin-top','15px');
+      }
     </script>
 @endsection

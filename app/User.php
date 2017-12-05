@@ -8,6 +8,7 @@ define('WEBMASTER', 8);
 define('ADMIN', 4);
 define('SUPERUSER', 2);
 define('USER', 1);
+define('GUEST', 0);
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'firstname', 'lastname', 'phone', 'email', 'level', 'password',
+        'username', 'prefix', 'firstname', 'lastname', 'phone', 'phone2', 'email', 'level', 'password',
     ];
 
     /**

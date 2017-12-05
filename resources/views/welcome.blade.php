@@ -99,11 +99,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{url('/linkHome')}}">Linkmonitor</a>
+                    <a href="{{url('/home')}}">Home</a>
+                    <a href="{{url('/linkHome')}}">Links Status</a>
+                    <a href="{{url('/news')}}">News</a>
                     <a href="https://www.facebook.com/profile.php?id=100006365016708&fref=ts">Our Facebook</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/cpatanarach">GitHub</a>
                 </div>
             </div>
         </div>
