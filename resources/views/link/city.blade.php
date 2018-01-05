@@ -12,12 +12,14 @@
         <div class="col-md-6 text-center">
             <h3 class="text-primary">สถานะการเชื่อมโยงระบบเครือข่ายสื่อสาร กรมที่ดิน</h3>
             <h5>ระหว่างศูนย์สารสนเทศที่ดิน กับสำนักงานที่ดินจังหวัด{{$city->city_name}}</h5>
-            <h5>ADMIN : @if(isset($city->newAdminCity->user->id)) {{$city->newAdminCity->user->firstname}} {{$city->newAdminCity->user->lastname}} @else ว่าง @endif</h5>
-            <h5>โทรศัพท์ : @if(isset($city->newAdminCity->user->phone)) {{$city->newAdminCity->user->phone}} @else ไม่ระบุ @endif</h5>
+            <h5>ADMIN : @if(isset($city->newCityAdmin->user->id)) {{$city->newCityAdmin->user->firstname}} {{$city->newCityAdmin->user->lastname}} @else ว่าง @endif</h5>
+            <h5>โทรศัพท์ : @if(isset($city->newCityAdmin->user->phone)) {{$city->newCityAdmin->user->phone}} @if(isset($city->newCityAdmin->user->phone2)) , {{$city->newCityAdmin->user->phone2}} @endif @endif</h5>
+
         </div>
         <div class="col-md-3 text-right">
             <h5 class="text-info" style="margin-top: 20px;">{{App\CalTime::getTimeNow()}}</h5>
             <p class="text-info">เวลา <span id="clock">{{date('H:i:s')}}</span> น.</p>
+            <a href="{{url('/linkHome')}}" style="text-decoration: none;"><i class="fa fa-arrow-circle-o-left"></i> ย้อนกลับ</a>
         </div>
         <div class="col-md-12" style="padding: 0px;">
             <table class="table table-hover">

@@ -74,93 +74,96 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand dol-nav-logo" href="{{url('/')}}">Computer Operation Department</a>
+                      <a class="navbar-brand dol-nav-logo" href="{{url('/')}}">Computer Operation Section</a>
                     </div>
 
                      <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav">
-                        <li class="@if(!empty($menu_home)) active @endif"><a href="{{url('/linkHome')}}"><i class="fa fa-home"></i> หน้าหลัก <span class="sr-only">(current)</span></a></li>
+                        <li class="@if(!empty($menu_home)) active @endif"><a href="{{url('/home')}}"><i class="fa fa-home"></i> หน้าหลัก <span class="sr-only">(current)</span></a></li>
                         <li><a href="#"><i class="fa fa-share-alt"></i> ข่าวประชาสัมพันธ์ </a></li>
-                        @if(Auth::check())
-                        @if(Auth::user()->level >= SUPERUSER)
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> โปรแกรมและลิงก์ </a>
-                              <ul class="dropdown-menu row">
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="{{url('/linkmonitor')}}" target="_blank" class="dol-nav-submenu dol-menu-space">
-                                        <i class="fa fa-tv dol-ico-menu"></i></br> 
-                                        Link Monitor
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="http://172.29.3.20" target="_blank" class="dol-nav-submenu dol-menu-space">
-                                        <i class="fa fa-link dol-ico-menu"></i></br>
-                                        What's up 20
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="http://172.29.3.21" target="_blank" class="dol-nav-submenu dol-menu-space">
-                                        <i class="fa fa-link dol-ico-menu"></i></br>What's up 21
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="http://172.29.30.41/nagiosxi/includes/components/xicore/status.php?show=hosts" target="_blank" class="dol-nav-submenu dol-menu-space">
-                                        <i class="fa fa-desktop dol-ico-menu"></i></br>
-                                        Negios XI (TRUE)
-                                    </a>
-                                </li>
-
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="{{url('/calTime')}}" class="dol-nav-submenu">
-                                        <i class="fa fa-clock-o dol-ico-menu"></i></br>
-                                        โปรแกรมคำนวณเวลา
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="{{url('/linkHome')}}" class="dol-nav-submenu">
-                                        <i class="fa fa-tasks dol-ico-menu"></i></br>
-                                        City Status
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="http://172.29.3.22/Linkmonitor/chk_link.php" target="_blank" class="dol-nav-submenu">
-                                        <i class="fa fa-calendar-check-o dol-ico-menu"></i></br>
-                                        Check List
-                                    </a>
-                                </li>
-                                <li class="list-unstyled col-md-3 text-center">
-                                    <a href="#" target="_blank" class="dol-nav-submenu">
-                                        <i class="fa fa-phone-square dol-ico-menu"></i></br>
-                                        เบอร์โทร ADMIN
-                                    </a>
-                                </li>
-                              </ul>
-                        </li>
-                        @endif
-                        @endif
                         <li><a href="#"><i class="fa fa-users"></i> บุคลากร </a></li>
                         <li><a href="#"><i class="fa fa-map-marker"></i> ติดต่อเรา </a></li>
                       </ul>
                         
                       <ul class="nav navbar-nav navbar-right">
+                        @if(Auth::check())
+                            @if(Auth::user()->level >= SUPERUSER)
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-reorder"></i> <span class="text-for-mobile">บริการของเรา </span></a>
+                                  <ul class="dropdown-menu row">
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="{{url('/linkmonitor')}}" target="_blank" class="dol-nav-submenu dol-menu-space">
+                                            <i class="fa fa-tv dol-ico-menu"></i></br> 
+                                            Link Monitor
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="http://172.29.3.20" target="_blank" class="dol-nav-submenu dol-menu-space">
+                                            <i class="fa fa-link dol-ico-menu"></i></br>
+                                            What's up 20
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="http://172.29.3.21" target="_blank" class="dol-nav-submenu dol-menu-space">
+                                            <i class="fa fa-link dol-ico-menu"></i></br>What's up 21
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="http://172.29.30.41/nagiosxi/includes/components/xicore/status.php?show=hosts" target="_blank" class="dol-nav-submenu dol-menu-space">
+                                            <i class="fa fa-desktop dol-ico-menu"></i></br>
+                                            Negios XI (TRUE)
+                                        </a>
+                                    </li>
+
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="{{url('/calTime')}}" class="dol-nav-submenu">
+                                            <i class="fa fa-clock-o dol-ico-menu"></i></br>
+                                            โปรแกรมคำนวณเวลา
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="{{url('/linkHome')}}" class="dol-nav-submenu">
+                                            <i class="fa fa-tasks dol-ico-menu"></i></br>
+                                            สถานะเครือข่าย
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="http://172.29.3.23/Linkmonitor/chk_link.php" target="_blank" class="dol-nav-submenu">
+                                            <i class="fa fa-calendar-check-o dol-ico-menu"></i></br>
+                                            Check List
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="#" target="_blank" class="dol-nav-submenu">
+                                            <i class="fa fa-phone-square dol-ico-menu"></i></br>
+                                            เบอร์โทร ADMIN
+                                        </a>
+                                    </li>
+                                  </ul>
+                            </li>
+                            @endif
+                        @endif
                         @if(!Auth::check())
                             <li><a href="{{url('/register')}}">ลงทะเบียน</a></li>
                             <li><a href="{{url('/login')}}">เข้าสู่ระบบ</a></li>
                         @else
                             <li class="dropdown dol-dropdown-user">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{Auth::user()->firstname}}</a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> <span class="text-for-mobile">{{Auth::user()->firstname}}</span></a>
                               <ul class="dropdown-menu dol-dropdown-user-menu">
-                                <li><a href="#">เปลี่ยนรหัสผ่าน</a></li>
-                                <li><a href="#">เปลี่ยนอีเมล</a></li>
-                                <li><a href="#">เปลี่ยนรูปประจำตัว</a></li>
+                                <li><a href="#"><i class="fa fa-lock"></i><span>เปลี่ยนรหัสผ่าน</span></a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i><span>เปลี่ยนอีเมล</span></a></li>
+                                <li><a href="#"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
                                 <li role="separator" class="divider"></li>
+                                @if(!empty(Auth::user()->newCityAdmin))
+                                    <li><a href="{{url('/linkHome')}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
+                                    <li role="separator" class="divider"></li>
+                                @endif
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out"></i> 
-                                     ออกจากระบบ
-                                    </a>
+                                    <i class="fa fa-sign-out"></i><span>ออกจากระบบ
+                                    </span></a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>

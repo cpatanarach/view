@@ -18,6 +18,7 @@
         <div class="col-md-3 text-right">
             <h5 class="text-info" style="margin-top: 20px;">{{App\CalTime::getTimeNow()}}</h5>
             <p class="text-info">เวลา <span id="clock">{{date('H:i:s')}}</span> น.</p>
+            <a href="{{url('/home')}}"><i class="fa fa-home"></i> หน้าหลัก</a>
         </div>
         <div class="col-md-12" style="padding: 0px;">
             <table class="table table-hover">

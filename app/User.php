@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 define('WEBMASTER', 8);
-define('ADMIN', 4);
-define('SUPERUSER', 2);
+define('ADMIN', 6);
+define('SUPERUSER', 4);
+define('SENIOR', 2);
 define('USER', 1);
 define('GUEST', 0);
 
@@ -31,7 +32,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    protected function newAdminCity(){
-        return $this->hasOne('App\newAdminCity');
+    protected function newCityAdmin(){
+        return $this->hasOne('App\newCityAdmin','user_id','id');
     }
 }

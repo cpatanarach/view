@@ -21,12 +21,17 @@ class LinkCityController extends Controller
             $searchEngine = $this->getSearchProvineEngine();
             return view('link.home')->with('searchEngine', $searchEngine)->with('allProvince',$allProvince);
         }else{
-            return redirect('/');
+            $USER = Auth::user()->newCityAdmin;
+            if(!empty($USER)){
+                return redirect(url('/linkCity') .'/'. $USER->city_id);
+            }else{
+                return redirect('/');
+            }
         }
     }
     protected function index($city_id){
     	$city = City::where('city_id','=',$city_id)->firstOrFail();
-    	if(Auth::user()->level >= ADMIN || $city->newCityAdmin->user->id == Auth::user()->id){
+    	if(Auth::user()->level >= SUPERUSER || $city->newCityAdmin->user->id == Auth::user()->id){
     		return view('link.city')->with('city', $city);
     	}else{
     		return redirect('/');
@@ -73,7 +78,7 @@ class LinkCityController extends Controller
     }
     protected function searchProvince(Request $data){
         //request input $data->province
-        if(Auth::user()->level >= WEBMASTER){
+        if(Auth::user()->level >= SUPERUSER){
             $searchEngine = $this->getSearchProvineEngine();
             $allProvince = City::where('city_name', 'LIKE', '%'.$data->province.'%')->get();
             return view('link.home')->with('allProvince', $allProvince)->with('searchEngine',$searchEngine);
