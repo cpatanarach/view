@@ -32,10 +32,18 @@ class LinkCityController extends Controller
     protected function index($city_id){
     	$city = City::where('city_id','=',$city_id)->firstOrFail();
     	if(Auth::user()->level >= SUPERUSER || $city->newCityAdmin->user->id == Auth::user()->id){
-    		return view('link.city')->with('city', $city);
+    		return view('link.city')->with('city', $city)->with('activeMobileView',url('/linkCity/activeMobileView') .'/'. $city_id);
     	}else{
     		return redirect('/');
     	}
+    }
+    protected function mobileIndex($city_id){
+        $city = City::where('city_id','=',$city_id)->firstOrFail();
+        if(Auth::user()->level >= SUPERUSER || $city->newCityAdmin->user->id == Auth::user()->id){
+            return view('link.cityActiveMobile')->with('city', $city);
+        }else{
+            return redirect('/');
+        }
     }
     protected function updateSpace(){
     	if(Auth::user()->level >= WEBMASTER){

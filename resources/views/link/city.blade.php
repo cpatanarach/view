@@ -132,10 +132,15 @@
             </table>
         </div>
     </div>
+    <input type="hidden" name="activeMobileView" value="{{$activeMobileView}}">
 </div>
 @endsection
 @section('script')
+    <script src="{{url('/resources/assets/js/main_mobile.js')}}"></script>
     <script type="text/javascript">
+        if(isMobile()){
+            window.location = $('input[name=activeMobileView]').val();
+        }
         setTimeout(function() {
             location.reload();
         }, 300000);

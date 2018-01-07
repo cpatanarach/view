@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/viewLinks', 'LinkmonitorController@viewLinks');
 	//LinkCity
 	Route::get('/linkCity/{city_id}', 'LinkCityController@index');
+	Route::get('/linkCity/activeMobileView/{city_id}', 'LinkCityController@mobileIndex');
 	Route::get('/updateSpace', 'LinkCityController@updateSpace');
 	Route::get('/updateNewCityTel', 'LinkCityController@updateNewCityTel');
 	Route::get('/linkHome/search', 'LinkCityController@searchProvince');
