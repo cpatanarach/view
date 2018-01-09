@@ -15,6 +15,10 @@ class CreateCityAuthorsTable extends Migration
     {
         Schema::create('city_authors', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('linkdata_id');
+            $table->string('number', 16);
+            $table->string('name');
+            $table->integer('type');
             $table->timestamps();
         });
     }
