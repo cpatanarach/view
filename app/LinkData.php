@@ -19,4 +19,7 @@ class LinkData extends Model
     protected function cityTel(){
         return $this->hasOne('App\CityTel', 'city_name1','city_name1');
     }
+    protected function author(){
+        return $this->hasMany('App\CityAuthor','linkdata_id','id');
+    }
 }

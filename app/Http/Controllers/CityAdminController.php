@@ -16,7 +16,7 @@ class CityAdminController extends Controller
     		$adminInfo = CityAdmin::where('city_id', '=', $city_id)->first();
     		return view('cityAdmin.edit')->with('adminInfo', $adminInfo);
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
     protected function update(Request $request){
@@ -30,7 +30,7 @@ class CityAdminController extends Controller
     		$cityAdmin->save();
     		return redirect('/linkHome');
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
 }

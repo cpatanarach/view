@@ -25,7 +25,7 @@ class LinkCityController extends Controller
             if(!empty($USER)){
                 return redirect(url('/linkCity') .'/'. $USER->city_id);
             }else{
-                return redirect('/');
+                return view('error404');
             }
         }
     }
@@ -34,7 +34,7 @@ class LinkCityController extends Controller
     	if(Auth::user()->level >= SUPERUSER || $city->newCityAdmin->user->id == Auth::user()->id){
     		return view('link.city')->with('city', $city)->with('activeMobileView',url('/linkCity/activeMobileView') .'/'. $city_id);
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
     protected function mobileIndex($city_id){
@@ -42,7 +42,7 @@ class LinkCityController extends Controller
         if(Auth::user()->level >= SUPERUSER || $city->newCityAdmin->user->id == Auth::user()->id){
             return view('link.cityActiveMobile')->with('city', $city);
         }else{
-            return redirect('/');
+            return view('error404');
         }
     }
     protected function updateSpace(){
@@ -72,7 +72,7 @@ class LinkCityController extends Controller
     		}
     		return $textResult;
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
     protected function updateNewCityTel(){
@@ -81,7 +81,7 @@ class LinkCityController extends Controller
 
     		return 'Test link is ok';
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
     protected function searchProvince(Request $data){
@@ -91,7 +91,7 @@ class LinkCityController extends Controller
             $allProvince = City::where('city_name', 'LIKE', '%'.$data->province.'%')->get();
             return view('link.home')->with('allProvince', $allProvince)->with('searchEngine',$searchEngine);
         }else{
-            return redirect('/');
+            return view('error404');
         }
     }
     protected function getSearchProvineEngine(){

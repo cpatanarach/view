@@ -13,13 +13,14 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
     */
-    public function index()
-    {
+    public function index(){
         return view('welcome');
     }
-     public function calTime()
-    {
-        return view('cal_time')->with('menu_service','1');
+    public function home(){
+        return view('home');
+    }
+    public function calTime(){
+        return view('cal_time');
     }
 
     //Test Query

@@ -21,7 +21,7 @@ class LinkmonitorController extends Controller
     	if(Auth::user()->level >= SUPERUSER){
     		return view('link.home');
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
     public function linkmonitor(Request $data){
@@ -119,7 +119,7 @@ class LinkmonitorController extends Controller
 
     		return view('link.monitor')->with('linkDown', $LinkDown)->with('pageNumber', $pageNumber)->with('perPage',$data->list)->with('Link72_Count',$Link72_Count)->with('Link386_Count',$Link386_Count)->with('search',$data->search)->with('speaker', $data->speaker)->with('soundtype', $data->soundtype)->with('programStatus', $chkProgram);
     	}else{
-    		return redirect('/');
+    		return view('error404');
     	}
     }
 
@@ -181,17 +181,7 @@ class LinkmonitorController extends Controller
             }
             return view('link.monitorAmp')->with('linkDown', $LinkDown)->with('pageNumber', $pageNumber)->with('perPage',$data->list)->with('search',$data->search);
         }else{
-            return redirect('/');
-        }
-    }
-    //Phone View
-    public function viewLinks(Request $data){
-        if(!isset($data->search)){$data->search='';}
-        if(Auth::user()->level >= SUPERUSER){
-            $allProvince = City::where('city_name', 'LIKE', '%'.$data->search.'%')->get();
-            return view('link.smart_monitor')->with('allProvince', $allProvince);
-        }else{
-            return "Please contact System's Administrators";
+            return view('error404');
         }
     }
 }

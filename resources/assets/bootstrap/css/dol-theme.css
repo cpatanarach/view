@@ -16,6 +16,39 @@
 .text-capitalize {
     text-transform: capitalize;
 }
+.no-decoration{
+	text-decoration: none!important;
+}
+.text-white{
+	color: #fff!important;
+}
+.bg-online{
+	background-color: #38bf00;
+	color: #fff;
+}
+.bg-offline{
+	background-color: #d40000;
+	color: #fff;
+}
+.bg-offline::before{
+	content: "\f071";
+	font-family: FontAwesome;
+}
+.bg-online::before{
+	content: "\f192";
+	font-family: FontAwesome;
+}
+.font-raleway{
+	font-family: 'Raleway'!important;
+}
+.font-kanit{
+	font-family: 'Kanit'!important;
+}
+.alert-default{
+	background-color: #ffffff;
+    border-color: #ccd0d2;
+    color: #313130;
+}
 .label-blank{
 	text-decoration: none!important;
 	padding: 2px 8px 4px 4px;
@@ -85,6 +118,9 @@
 }
 .space-10{
 	padding: 10px 0px 0px 0px;
+}
+.space-5{
+	padding: 5px 0px 0px 0px;
 }
 .popup-main {
     position: relative;
@@ -173,8 +209,34 @@
 .dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
   text-decoration: none;
 }  
+.pageLoading{
+	display: none;
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9999999;
+    padding-top: 20%;
+}
+.pageLoading > h4{
+	color: #fff;
+}
+
   
 @media (max-width: 1024px) {
+	.hideIfMobile{
+		display: none;
+	}
+  li.open > ul.dropdown-menu {
+  	display: block;
+  	visibility: visible;
+  }
+  ul.dropdown-menu{
+  	display: none;
+  	visibility: hidden;
+  }
   .dol-nav-submenu{
 	font-size: 14px;	
 	padding: 15px 20px!important;

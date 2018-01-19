@@ -91,7 +91,7 @@
                             @if(Auth::user()->level >= SUPERUSER)
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-reorder"></i> <span class="text-for-mobile">บริการของเรา </span></a>
-                                  <ul class="dropdown-menu row">
+                                <ul class="dropdown-menu row">
                                     <li class="list-unstyled col-md-3 text-center">
                                         <a href="{{url('/linkmonitor')}}" target="_blank" class="dol-nav-submenu dol-menu-space">
                                             <i class="fa fa-tv dol-ico-menu"></i></br> 
@@ -140,7 +140,7 @@
                                             เบอร์โทร ADMIN
                                         </a>
                                     </li>
-                                  </ul>
+                                </ul>
                             </li>
                             @endif
                         @endif
@@ -185,6 +185,9 @@
             <!-- End Test NAV -->
         </nav>
         @yield('content')
+        <div id="pageLoading" class="pageLoading text-center">
+            <h4><i class="fa fa-spinner fa-spin"></i> กรุณารอสักครู่</h4>
+        </div>
     </div>
 
     <!-- Scripts -->

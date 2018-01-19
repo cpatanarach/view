@@ -17,14 +17,13 @@ Route::group(['middleware' => ['web']], function () {
  	//HomeController
     Route::get('/', 'HomeController@index');
     Route::get('/calTime', 'HomeController@calTime');
-    Route::get('/home', 'LinkCityController@home');
+    Route::get('/home', 'HomeController@home');
     //AlertController
     Route::get('/alert/wait', 'AlertController@wait');
     //LinkmonitorController
 	Route::get('/linkHome', 'LinkCityController@home');
 	Route::get('/linkmonitor', 'LinkmonitorController@linkmonitor');
 	Route::get('/linkmonitorAmp', 'LinkmonitorController@linkmonitorAmp');
-	Route::get('/viewLinks', 'LinkmonitorController@viewLinks');
 	//LinkCity
 	Route::get('/linkCity/{city_id}', 'LinkCityController@index');
 	Route::get('/linkCity/activeMobileView/{city_id}', 'LinkCityController@mobileIndex');
@@ -34,6 +33,10 @@ Route::group(['middleware' => ['web']], function () {
 	//cityAdmin
 	Route::get('/cityAdmin/edit/{city_id}', 'CityAdminController@edit');
 	Route::post('/cityAdmin/update', 'CityAdminController@update');
+	//CityAuthor
+	Route::get('/linkdata/author/{linkdata_id}', 'CityAuthorController@index');
+	Route::post('/linkdata/author/add', 'CityAuthorController@store');
+	Route::get('/linkdata/author/remove/{linkdata_id}/{author_id}', 'CityAuthorController@destroy');
 	//Register and Login
 	Auth::routes();
 });
