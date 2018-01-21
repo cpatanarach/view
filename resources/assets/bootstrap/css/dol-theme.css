@@ -304,9 +304,23 @@
 	.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
     	background-color: rgba(183, 181, 176, 0.08);
 	}
+	.btn-under{
+		display: block;
+		width: 100%;
+		border-top: 1px solid #fff;
+	}
 }
  
 @media (min-width: 1025px) {
+	.btn-under{
+		display: inline;
+	}
+	.btn-under::before{
+		content: ": ";
+	}
+	.zoomFont{
+		font-size: 14px;
+	}
   	ul.nav li:hover > ul.dropdown-menu {
 		width: 100%;
     	visibility: visible;

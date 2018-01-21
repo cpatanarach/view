@@ -77,20 +77,21 @@
     			<div class="alert alert-success" role="alert"><i class="fa fa-check"></i> ลบข้อมูลสำเร็จ</div>
     		@endif
 
-	        @forelse($linkData->author as $author)
-	        	<div class="alert alert-default alert-dismissible col-md-5" role="alert">
-				  	<button item="remove-author" action="{{url('/linkdata/author/remove')}}/{{$linkData->id}}/{{$author->id}}" confirm="{{$author->name}}" type="button" class="close" aria-label="Close"><span aria-hidden="true" class="text-danger">&times;</span></button>
-				  	<span class="label label-default">@if($author->type == 1) <i class="fa fa-tty"></i> @elseif($author->type == 2) <i class="fa fa-fax"></i> @elseif($author->type == 3) <i class="fa fa-user"></i> @elseif($author->type == 4) <i class="fa fa-microphone"></i> @elseif($author->type == 5) <i class="fa fa-file-video-o"></i> @endif {{$author->name}}</span>
-				  	<label class="label label-success">&nbsp{{$author->number}}&nbsp</label>
-				  	<a href="tel:{{$author->number}}" class="label label-primary"><i class="fa fa-phone"></i> โทรออก</a>
-				  	<a href="{{url('/linkdata/author/edit')}}/{{$author->id}}" class="pull-right"><i class="fa fa-edit"></i></a>
-				</div>
-				<!-- Padding for PC-->
-				<div class="col-xs-1 hideIfMobile"></div>
-				<!-- End of Padding for PC-->
+	        @forelse($linkData->author as $i => $author)
+		        <div class="panel panel-default col-md-5 @if($i%2==1) col-md-offset-2 @endif">
+		        	<div class="panel-body">
+		        		<a href="tel:{{$author->number}}" class="btn btn-block btn-success">@if($author->type == 1) <i class="fa fa-tty"></i> @elseif($author->type == 2) <i class="fa fa-fax"></i> @elseif($author->type == 3) <i class="fa fa-user-circle"></i> @elseif($author->type == 4) <i class="fa fa-microphone"></i> @elseif($author->type == 5) <i class="fa fa-file-video-o"></i> @endif {{$author->name}} 
+		        			<span class="btn-under">{{$author->number}}</span>
+		        		</a>
+		        		<div class="btn-block text-center">
+		        			<a href="{{url('/linkdata/author/edit')}}/{{$author->id}}" class="text-center no-decoration" onclick="getPageLoading();" style="padding-right: 10px;"><i class="fa fa-edit"></i> แก้ไข</a>
+		        			<a href="#" class="text-center text-danger no-decoration" style="padding-left: 10px;" item="remove-author" action="{{url('/linkdata/author/remove')}}/{{$linkData->id}}/{{$author->id}}" confirm="{{$author->name}}"><i class="fa fa-close"></i> ลบข้อมูล</a>
+		        		</div>
+		        	</div>	        		
+		        </div>
 	        @empty
 	        	<div class="panel panel-default">
-	        		<div class="panel-body">
+	        		<div class="panel-body text-center">
 	        			<p class="text-danger">ไม่มีรายชื่อผู้ติดต่อ</p>
 	        		</div>
 	        	</div>
@@ -135,12 +136,15 @@
 
 			}
 		});
-		$('button[item=remove-author]').click(function(){
+		$('a[item=remove-author]').click(function(){
 			var cfm = confirm('คุณต้องการลบข้อมูล '+ $(this).attr('confirm') + ' ใช่หรือไม่');
 			if(cfm){window.location = $(this).attr('action');$('#pageLoading').css('display','block');}
 		});
 		$('form').submit(function(){
 			$('#form-loading').css('display','block');
 		});
+		function getPageLoading(){
+			$('#pageLoading').css('display','block');
+		}
 	</script>
 @endsection

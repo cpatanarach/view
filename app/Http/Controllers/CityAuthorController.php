@@ -60,7 +60,7 @@ class CityAuthorController extends Controller
      * @param  \App\CityAuthor  $cityAuthor
      * @return \Illuminate\Http\Response
      */
-    public function edit(CityAuthor $cityAuthor)
+    public function edit($author_id)
     {
         //
     }
@@ -76,13 +76,6 @@ class CityAuthorController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CityAuthor  $cityAuthor
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($linkdata_id , $author_id){
         $linkData = LinkData::findOrFail($linkdata_id);
         if(!empty($linkData->city->newCityAdmin || Auth::user()->level >= ADMIN)){
