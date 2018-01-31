@@ -312,6 +312,9 @@
 }
  
 @media (min-width: 1025px) {
+	.hideIfPC{
+		display: none;
+	}
 	.btn-under{
 		display: inline;
 	}

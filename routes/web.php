@@ -36,6 +36,8 @@ Route::group(['middleware' => ['web']], function () {
 	//CityAuthor
 	Route::get('/linkdata/author/{linkdata_id}', 'CityAuthorController@index');
 	Route::post('/linkdata/author/add', 'CityAuthorController@store');
+	Route::get('/linkdata/author/edit/{author_id}','CityAuthorController@edit');
+	Route::post('/linkdata/author/update', 'CityAuthorController@update');
 	Route::get('/linkdata/author/remove/{linkdata_id}/{author_id}', 'CityAuthorController@destroy');
 	//Register and Login
 	Auth::routes();

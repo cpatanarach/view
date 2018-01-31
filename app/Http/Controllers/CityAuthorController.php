@@ -60,21 +60,31 @@ class CityAuthorController extends Controller
      * @param  \App\CityAuthor  $cityAuthor
      * @return \Illuminate\Http\Response
      */
-    public function edit($author_id)
-    {
-        //
+    public function edit($author_id){
+        $author = CityAuthor::findOrFail($author_id);
+        if(!empty($author->linkData->city->newCityAdmin || Auth::user()->level >= ADMIN)){
+            return view('link.author.edit')->with('author', $author);
+        }else{
+            return view('error404');
+        }
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CityAuthor  $cityAuthor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CityAuthor $cityAuthor)
-    {
-        //
+    public function update(Request $request){
+        $author = CityAuthor::findOrFail($request->ref);
+        if(!empty($author->linkData->city->newCityAdmin || Auth::user()->level >= ADMIN)){
+            $validate = $this->validateInput($request->all());
+            if($validate->passes()){
+                $input = $request->all();
+                $author->name = $input['name'];
+                $author->type = $input['type'];
+                $author->number = $input['number'.$input['type']];
+                $author->save();
+                return redirect()->back()->with('success', '1');
+            }else{
+                return redirect()->back()->withErrors($validate)->withInput();
+            }
+        }else{
+            return view('error404');
+        }
     }
     public function destroy($linkdata_id , $author_id){
         $linkData = LinkData::findOrFail($linkdata_id);
@@ -94,9 +104,11 @@ class CityAuthorController extends Controller
             $min += 6;
         }
         return Validator::make($data, [
-            'name' => 'required|unique:city_authors|max:255',
+            'name' => 'required|max:255|unique:city_authors,name,'.$data['ref'],
             'type' => 'required|numeric|max:255',
             'number'.$data['type'] => 'required|min:'.$min.'|max:'.$min,
+        ],[
+            'name.unique' => 'มีข้อมูลอยู่ในระบบแล้ว',
         ]);
     }
 }

@@ -18,7 +18,10 @@
                 <!-- Source -->
                 @forelse($allProvince as $province)
                 	<tr class="text-centers">
-                		<td><a href="{{url('/linkCity')}}/{{$province->city_id}}">{{$province->city_name}}</a></td>
+                		<td>
+                        <a class="hideIfMobile" href="{{url('/linkCity')}}/{{$province->city_id}}">{{$province->city_name}}</a>
+                        <a class="hideIfPC" href="{{url('/linkCity')}}/activeMobileView/{{$province->city_id}}">{{$province->city_name}}</a>
+                    </td>
                 		<td type="admin">{{$province->cityAdmin->name_admin}} 
                         @if(Auth::user()->level >= ADMIN)
                           <a href="{{url('/cityAdmin/edit')}}/{{$province->cityAdmin->city_id}}" style="margin-left: 10px;"><i class="fa fa-edit"></i></a>
