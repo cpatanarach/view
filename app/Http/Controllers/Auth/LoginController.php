@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 class LoginController extends Controller
 {
     /*
@@ -78,6 +79,7 @@ class LoginController extends Controller
             return response()->json($errors, 422);
         }
 
+        Log::alert($request->ip().'['.$request->username.$request->email.']->'. implode(' ', array_values($errors)));
         return redirect()->back()
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors($errors);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LinkData;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,5 @@ class HomeController extends Controller
     //Test Query
     public function testQuery(){
         //$linkData = LinkData::distinct()->get(['city_name']);
-        $linkData = $linkData = LinkData::all();
-        return view('testQuery')->with('province', $linkData);
     }
 }

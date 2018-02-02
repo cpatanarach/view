@@ -115,13 +115,6 @@
                                             Negios XI (TRUE)
                                         </a>
                                     </li>
-
-                                    <li class="list-unstyled col-md-3 text-center">
-                                        <a href="{{url('/calTime')}}" class="dol-nav-submenu">
-                                            <i class="fa fa-clock-o dol-ico-menu"></i></br>
-                                            โปรแกรมคำนวณเวลา
-                                        </a>
-                                    </li>
                                     <li class="list-unstyled col-md-3 text-center">
                                         <a href="{{url('/linkHome')}}" class="dol-nav-submenu">
                                             <i class="fa fa-tasks dol-ico-menu"></i></br>
@@ -135,9 +128,15 @@
                                         </a>
                                     </li>
                                     <li class="list-unstyled col-md-3 text-center">
-                                        <a href="#" target="_blank" class="dol-nav-submenu">
-                                            <i class="fa fa-phone-square dol-ico-menu"></i></br>
-                                            เบอร์โทร ADMIN
+                                        <a href="{{url('/calTime')}}" class="dol-nav-submenu">
+                                            <i class="fa fa-clock-o dol-ico-menu"></i></br>
+                                            โปรแกรมคำนวณเวลา
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled col-md-3 text-center">
+                                        <a href="http://www2.dol.truegse.com" target="_blank" class="dol-nav-submenu">
+                                            <i class="fa fa-unlink dol-ico-menu"></i></br>
+                                            แจ้ง Link True
                                         </a>
                                     </li>
                                 </ul>

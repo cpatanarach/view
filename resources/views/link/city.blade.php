@@ -1,6 +1,6 @@
 @extends('layouts.app_no_bar')
 @section('meta')
-    <meta http-equiv="refresh" content="30"/>
+    <meta http-equiv="refresh" content="300"/>
 @endsection
 @section('content')
 <div class="container">
@@ -28,51 +28,44 @@
                     <td class="col-md-1"><strong>Gateway</strong></td>
                     <td class="col-md-1"><strong>WAN1</strong></td>
                     <td class="col-md-1"><strong>WAN2</strong></td>
-                    <td class="col-md-2"><strong>เบอร์โทรสำนักงาน</strong></td>
-                    <td class="col-md-2"><strong>ผู้ดูแล</strong></td>
-                    <td class="col-md-2"><strong>เบอร์โทรผู้ดูแล</strong></td>
+                    <td class="col-md-3" colspan="2"><strong>เบอร์โทรสำนักงาน</strong></td>
+                    <td class="col-md-1"><strong></strong></td>
                 </tr>
-                @forelse($city->linkData as $linkData)
+                @forelse($city->linkData as $i => $linkData)
                     @if(strpos($linkData->city_name1, 'อำเภอ') === FALSE)
                     <tr>
                         <td>{{$linkData->city_name1}}</td>
                         <td class="text-center">@if(App\LinkDown::where([['city_id','=', $linkData->id],['job_down','=','OFF'],['link_status', '=', 'GateWay'],])->count()) <div class="popup-main"><span class="label-offline"><i class="fa fa-close"></i> Down</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_gw}}</div></div> @else <div class="popup-main"><span class="label-online"><i class="fa fa-check"></i> Online</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_gw}}</div></div> @endif</td>
                         <td class="text-center">@if(App\LinkDown::where([['city_id','=', $linkData->id],['job_down','=','OFF'],['link_status', '=', 'Wan1'],])->count()) <div class="popup-main"><span class="label-offline"><i class="fa fa-close"></i> Down</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan1_1}}</div></div> @else <div class="popup-main"><span class="label-online"><i class="fa fa-check"></i> Online</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan1_1}}</div></div> @endif</td>
                         <td class="text-center">@if(App\LinkDown::where([['city_id','=', $linkData->id],['job_down','=','OFF'],['link_status', '=', 'Wan2'],])->count()) <div class="popup-main"><span class="label-offline"><i class="fa fa-close"></i> Down</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan2_1}}</div></div> @else <div class="popup-main"><span class="label-online"><i class="fa fa-check"></i> Online</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan2_1}}</div></div> @endif</td>
-                        <td class="text-left">
-                                @if(!empty($linkData->cityTel->tel1))
-                                    <div class="popup-main">
-                                        <a class="label-blank" href="{{url('/editInformation')}}/{{$city->city_id}}">
-                                            <i class="fa fa-phone"></i>
-                                            {{$linkData->cityTel->tel1}}
+                        <td class="text-center" colspan="2">
+                            @if($linkData->author->count() > 0)
+                                <a data-toggle="collapse" href="#collapse{{$i+1}}" role="button" aria-expanded="true" aria-controls="collapse{{$i+1}}" class="btn-block no-decoration"><i class="fa fa-phone"></i> หมายเลขโทรศัพท์</a>
+                                <div id="collapse{{$i+1}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="padding: 0% 10% 0% 10%;">
+                                    @foreach($linkData->author as $author)
+                                        <a href="tel:{{$author->number}}" class="label-blank btn-block">@if($author->type == 1) <i class="fa fa-tty"></i> @elseif($author->type == 2) <i class="fa fa-fax"></i> @elseif($author->type == 3) <i class="fa fa-user-circle"></i> @elseif($author->type == 4) <i class="fa fa-microphone"></i> @elseif($author->type == 5) <i class="fa fa-file-video-o"></i> @endif {{$author->name}} 
+                                        <span class="btn-under">{{$author->number}}</span>
                                         </a>
-                                        @if(!empty($linkData->cityTel->tel2) || !empty($linkData->cityTel->tel3) || !empty($linkData->cityTel->tel4) || !empty($linkData->cityTel->tel5))
-                                            <div class="popup-item" style="margin-bottom: 7px;">
-                                                @if(!empty($linkData->cityTel->tel2)) <p>{{$linkData->cityTel->tel2}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel3)) <p>{{$linkData->cityTel->tel3}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel4)) <p>{{$linkData->cityTel->tel4}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel5)) <p>{{$linkData->cityTel->tel5}}</p> @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                @else
-                                    <div class="popup-main">
-                                        <a class="label-online" href="{{url('/editInformation')}}/{{$city->city_id}}">
-                                            <i class="fa fa-plus" style="padding: 3px 5px 3px 5px;"></i>
-                                            เพิ่มหมายเลข
-                                        </a>
-                                        @if(!empty($linkData->cityTel->tel2) || !empty($linkData->cityTel->tel3) || !empty($linkData->cityTel->tel4) || !empty($linkData->cityTel->tel5))
-                                            <div class="popup-item" style="margin-bottom: 7px;">
-                                                @if(!empty($linkData->cityTel->tel2)) <p>{{$linkData->cityTel->tel2}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel3)) <p>{{$linkData->cityTel->tel3}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel4)) <p>{{$linkData->cityTel->tel4}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel5)) <p>{{$linkData->cityTel->tel5}}</p> @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                @endif
-                        <td></td>
-                        <td></td>
+                                    @endforeach
+                                </div>
+                            @else
+                                <a class="text-muted no-decoration">ยังไม่ระบุหมายเลขโทรศัพท์</a>
+                            @endif
+                        </td>
+                        <td>
+                            <!-- Button Right -->
+                            @if($linkData->author->count() > 0)
+                                <a class="label-online" href="{{url('/linkdata/author')}}/{{$linkData->id}}">
+                                    <i class="fa fa-cogs" style="padding: 3px 5px 3px 5px;"></i>
+                                            ตั้งค่า
+                                </a>
+                            @else
+                                <a class="label-online" href="{{url('/linkdata/author')}}/{{$linkData->id}}">
+                                    <i class="fa fa-plus" style="padding: 3px 5px 3px 5px;"></i>
+                                            เพิ่ม
+                                </a>
+                            @endif
+                        </td>
                     </tr>
                     @endif
                 @empty
@@ -80,48 +73,41 @@
                         <td colspan="7">ไม่พบข้อมูล</td>
                     </tr>
                 @endforelse    
-                @forelse($city->linkData->sortBy('city_name') as $linkData)
+                @forelse($city->linkData->sortBy('city_name') as $i => $linkData)
                     @if(strpos($linkData->city_name1, 'อำเภอ'))
                     <tr>
                         <td>{{$linkData->city_name1}}</td>
                         <td class="text-center">@if(App\LinkDownAMP::where([['n_city2','=', $linkData->city_name1],['job_down','=','OFF'],['link_status', '=', 'GateWay'],])->count()) <div class="popup-main"><span class="label-offline"><i class="fa fa-close"></i> Down</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_gw}}</div></div> @else <div class="popup-main"><span class="label-online"><i class="fa fa-check"></i> Online</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_gw}}</div></div> @endif</td>
                         <td class="text-center">@if(App\LinkDownAMP::where([['n_city2','=', $linkData->city_name1],['job_down','=','OFF'],['link_status', '=', 'Wan1'],])->count()) <div class="popup-main"><span class="label-offline"><i class="fa fa-close"></i> Down</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan1_1}}</div></div> @else <div class="popup-main"><span class="label-online"><i class="fa fa-check"></i> Online</span><div class="popup-item" style="margin-bottom: 7px;">{{$linkData->ip_wan1_1}}</div></div> @endif </td>
                         <td></td>
-                        <td class="text-left">
-                                @if(!empty($linkData->cityTel->tel1))
-                                    <div class="popup-main">
-                                        <a class="label-blank" href="{{url('/editInformation')}}/{{$city->city_id}}">
-                                            <i class="fa fa-phone"></i>
-                                            {{$linkData->cityTel->tel1}}
+                        <td class="text-center" colspan="2">
+                            @if($linkData->author->count() > 0)
+                                <a data-toggle="collapse" href="#collapse{{$i+1}}" role="button" aria-expanded="true" aria-controls="collapse{{$i+1}}" class="btn-block no-decoration"><i class="fa fa-phone"></i> หมายเลขโทรศัพท์</a>
+                                <div id="collapse{{$i+1}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="padding: 0% 10% 0% 10%;">
+                                    @foreach($linkData->author as $author)
+                                        <a href="tel:{{$author->number}}" class="label-blank btn-block">@if($author->type == 1) <i class="fa fa-tty"></i> @elseif($author->type == 2) <i class="fa fa-fax"></i> @elseif($author->type == 3) <i class="fa fa-user-circle"></i> @elseif($author->type == 4) <i class="fa fa-microphone"></i> @elseif($author->type == 5) <i class="fa fa-file-video-o"></i> @endif {{$author->name}} 
+                                        <span class="btn-under">{{$author->number}}</span>
                                         </a>
-                                        @if(!empty($linkData->cityTel->tel2) || !empty($linkData->cityTel->tel3) || !empty($linkData->cityTel->tel4) || !empty($linkData->cityTel->tel5))
-                                            <div class="popup-item" style="margin-bottom: 7px;">
-                                                @if(!empty($linkData->cityTel->tel2)) <p>{{$linkData->cityTel->tel2}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel3)) <p>{{$linkData->cityTel->tel3}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel4)) <p>{{$linkData->cityTel->tel4}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel5)) <p>{{$linkData->cityTel->tel5}}</p> @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                @else
-                                    <div class="popup-main">
-                                        <a class="label-online" href="{{url('/editInformation')}}/{{$city->city_id}}">
-                                            <i class="fa fa-plus" style="padding: 3px 5px 3px 5px;"></i>
-                                            เพิ่มหมายเลข
-                                        </a>
-                                        @if(!empty($linkData->cityTel->tel2) || !empty($linkData->cityTel->tel3) || !empty($linkData->cityTel->tel4) || !empty($linkData->cityTel->tel5))
-                                            <div class="popup-item" style="margin-bottom: 7px;">
-                                                @if(!empty($linkData->cityTel->tel2)) <p>{{$linkData->cityTel->tel2}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel3)) <p>{{$linkData->cityTel->tel3}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel4)) <p>{{$linkData->cityTel->tel4}}</p> @endif
-                                                @if(!empty($linkData->cityTel->tel5)) <p>{{$linkData->cityTel->tel5}}</p> @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                @endif
+                                    @endforeach
+                                </div>
+                            @else
+                                <a class="text-muted no-decoration">ยังไม่ระบุหมายเลขโทรศัพท์</a>
+                            @endif
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <!-- Button Right -->
+                            @if($linkData->author->count() > 0)
+                                <a class="label-online" href="{{url('/linkdata/author')}}/{{$linkData->id}}">
+                                    <i class="fa fa-cogs" style="padding: 3px 5px 3px 5px;"></i>
+                                            ตั้งค่า
+                                </a>
+                            @else
+                                <a class="label-online" href="{{url('/linkdata/author')}}/{{$linkData->id}}">
+                                    <i class="fa fa-plus" style="padding: 3px 5px 3px 5px;"></i>
+                                            เพิ่ม
+                                </a>
+                            @endif
+                        </td>
                     </tr>
                     @endif
                 @empty
