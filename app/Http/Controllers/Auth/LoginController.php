@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -58,6 +59,8 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
+            $auth = $request->has('username') ? $request->username : $request->email;
+            Log::info($request->ip().'['.$auth.']-> login success.');
             return $this->sendLoginResponse($request);
         }
 
@@ -78,8 +81,8 @@ class LoginController extends Controller
         if ($request->expectsJson()) {
             return response()->json($errors, 422);
         }
-
-        Log::alert($request->ip().'['.$request->username.$request->email.']->'. implode(' ', array_values($errors)));
+        $auth = $request->has('username') ? $request->username : $request->email;
+        Log::alert($request->ip().'['.$auth.']-> '. implode(' ', array_values($errors)));
         return redirect()->back()
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors($errors);
@@ -88,5 +91,14 @@ class LoginController extends Controller
         return $this->limiter()->tooManyAttempts(
             $this->throttleKey($request), $this->maxAttempts, $this->delayNextLogin
         );
+    }
+    public function logout(Request $request)
+    {
+        Log::info($request->ip().'['.Auth::user()->email.']-> logout.');
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 }
