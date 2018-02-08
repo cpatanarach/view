@@ -5,7 +5,7 @@
     <div class="row">
     	<div class="space-30"></div>
     	<div class="panel panel-default">
-    		<div class="panel-heading"><a href="{{url('/linkdata/author')}}/{{$author->linkData->id}}" onclick="getPageLoading();"><i class="fa fa-chevron-left"></i></a> รายชื่อผู้ติดต่อสำนักงานที่ดิน@if($author->linkData->city->city_id == 1)จังหวัด@endif{{$author->linkData->city_name1}}</div>
+    		<div class="panel-heading"><a href="{{url('/linkdata/author')}}/{{$author->linkData->id}}" onclick="getPageLoading();"><i class="fa fa-chevron-left"></i></a> รายชื่อผู้ติดต่อสำนักงานที่ดิน@if($author->linkData->city->city_id != 1)จังหวัด@endif{{$author->linkData->city_name1}}</div>
     		<div class="panel-body">
     			@if(Session::has('success'))
     				<div class="alert alert-success" role="alert"><i class="fa fa-check"></i> บันทึกข้อมูลสำเร็จ</div>

@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\LinkDown;
 use App\Alert;
+use Illuminate\Support\Facades\Log;
 
 class AlertController extends Controller
 {
@@ -20,7 +21,9 @@ class AlertController extends Controller
     	$linkDown = LinkDown::findOrFail($data->ref);
     	if((Auth::user()->level >= ADMIN) || (strpos($linkDown->linkData->job_name, Auth::user()->firstname))){
     		$alert = Alert::updateOrCreate(['link_down_id' => $linkDown->id],
-    			['comment' => $comment]);
+    			['comment' => Auth::user()->firstname.' : '.$comment]);
+            //push to history.
+            Log::info($data->ip().'['.Auth::user()->email.']->Comment['.$comment.'] to LinkDown.Class['.$linkDown->id.' => '.$linkDown->n_city2.']');
        	}
     	return redirect()->back();
     }

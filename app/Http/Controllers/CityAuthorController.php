@@ -14,8 +14,7 @@ class CityAuthorController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    public function index($linkdata_id)
-    {
+    public function index($linkdata_id){
         $linkData = LinkData::findOrFail($linkdata_id);
         if(!empty($linkData->city->newCityAdmin || Auth::user()->level >= ADMIN)){
             if(Auth::user()->level >= ADMIN || $linkData->city->newCityAdmin->user->id == Auth::user()->id){
@@ -27,8 +26,7 @@ class CityAuthorController extends Controller
             return view('error404');
         }
     }
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $linkData = LinkData::findOrFail($request->ref);
         $input = $request->all();
         if(!empty($linkData->city->newCityAdmin || Auth::user()->level >= ADMIN)){
@@ -104,7 +102,7 @@ class CityAuthorController extends Controller
             $min += 6;
         }
         return Validator::make($data, [
-            'name' => 'required|max:255|unique:city_authors,name,'.$data['ref'],
+            'name' => 'required|max:255',
             'type' => 'required|numeric|max:255',
             'number'.$data['type'] => 'required|min:'.$min.'|max:'.$min,
         ],[
