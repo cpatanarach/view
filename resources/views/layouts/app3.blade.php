@@ -193,10 +193,59 @@
             <h4><i class="fa fa-spinner fa-spin"></i> กรุณารอสักครู่</h4>
         </div>
     </div>
-
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 widget">
+                    <h2><i class="fa fa-comments"></i> บทความ</h2>
+                    <article class="widget_content">
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+                            <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+                            <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</li>
+                     </ul>
+                     </article>
+                </div>
+                <div class="col-md-3 widget">
+                    <h2><i class="fa fa-share-alt"></i> เว็บไซต์แนะนำ</h2>
+                    <article class="widget_content">
+                        <ul>
+                            <li><a target="_blank" href="http://www.dol.go.th" class="no-decoration">กรมที่ดิน</a></li>
+                            <li><a target="_blank" href="http://nam.dol.go.th/personnel/Pages/default.aspx" class="no-decoration">กองการเจ้าหน้าที่ กรมที่ดิน</a></li>
+                            <li><a target="_blank" href="http://www.dol.go.th/dol/index.php?option=com_payroll" class="no-decoration">สืบค้นการจ่ายเงินเดือน</a></li>
+                            <li><a target="_blank" href="" class="no-decoration">สืบค้นรายการหักลดหย่อนภาษี</a></li>
+                     </ul>
+                     </article>
+                </div>
+                <div class="col-md-4 widget">
+                    <h2><i class="fa fa-map-marker"></i> ติดต่อเรา</h2>
+                    <article class="widget_content">
+                        <p>ฝ่ายปฏิบัติการคอมพิวเตอร์ สำนักเทคโนโลยีสารสนเทศ<br>ชั้น 4 อาคารรังวัดและทำแผนที่ กรมที่ดิน <br>ตำบลบางพูด อำเภอปากเกร็ด จังหวัดนนทบุรี 11120<br><i class="fa fa-phone-square"></i> 0 2503 3369 (08.30 น. - 16.30 น.)</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 widget"><i class="fa fa-copyright"></i> 2018 | Computer Operation Section 
+                    <span class="pull-right hideIfMobile">Support  
+                        <i class="fa fa-chrome"></i>
+                        <i class="fa fa-firefox"></i>
+                        <i class="fa fa-internet-explorer"></i>
+                        <i class="fa fa-opera"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Footer -->
     <!-- Scripts -->
     <script src="{{ url('/resources/assets/bootstrap/js/jquery-1.10.1.min.js') }}"></script>
     <script src="{{ url('/public/js/app.js')}}"></script>
+    <script src="{{ url('/public/js/footer.js')}}"></script>
     <!--<script src="{{ url('/resources/assets/bootstrap/js/bootstrap.min.js') }}"></script>-->
     @yield('script')
 </body>
