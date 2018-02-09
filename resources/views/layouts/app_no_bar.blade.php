@@ -46,6 +46,9 @@
         <nav class="navbar-static-top oper-nav">            
         </nav>
         @yield('content')
+        <div id="pageLoading" class="pageLoading text-center">
+            <h4><i class="fa fa-spinner fa-spin"></i> กรุณารอสักครู่</h4>
+        </div>
     </div>
 
     <!-- Scripts -->

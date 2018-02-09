@@ -119,6 +119,13 @@
                     </tr>
                 @endif
             @endforeach
+            <tr>
+                @if(Auth::user()->level >= SUPERUSER)
+                    <td colspan="12" class="text-center"><a href="{{url('/linkHome')}}"><span class="fa fa-chevron-left"></span> ย้อนกลับ</a></td>
+                @else
+                    <td colspan="12" class="text-center"><a href="{{url('/home')}}"><span class="fa fa-home"></span> หน้าหลัก</a></td>
+                @endif
+            </tr>
         </table>
         
     </div>

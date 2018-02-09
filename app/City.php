@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     protected $table = 'city_name';
+    protected $primaryKey = 'city_id';
     protected function newCityAdmin(){
     	return $this->hasOne('App\newCityAdmin','city_id','city_id');
     }

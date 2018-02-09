@@ -41,4 +41,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/linkdata/author/remove/{linkdata_id}/{author_id}', 'CityAuthorController@destroy');
 	//Register and Login
 	Auth::routes();
+	//newCityAmdin
+	Route::post('/newCityAdmin/store','newCityAdminController@store');
 });

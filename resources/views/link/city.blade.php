@@ -11,10 +11,37 @@
         </div>
         <div class="col-md-6 text-center">
             <h3 class="text-primary">สถานะการเชื่อมโยงระบบเครือข่ายสื่อสาร กรมที่ดิน</h3>
-            <h5>ระหว่างศูนย์สารสนเทศที่ดิน กับสำนักงานที่ดินจังหวัด{{$city->city_name}}</h5>
-            <h5>ADMIN : @if(isset($city->newCityAdmin->user->id)) {{$city->newCityAdmin->user->firstname}} {{$city->newCityAdmin->user->lastname}} @else ว่าง @endif</h5>
-            <h5>โทรศัพท์ : @if(isset($city->newCityAdmin->user->phone)) {{$city->newCityAdmin->user->phone}} @if(isset($city->newCityAdmin->user->phone2)) , {{$city->newCityAdmin->user->phone2}} @endif @endif</h5>
-
+            <h5>ระหว่างศูนย์สารสนเทศที่ดิน กับสำนักงานที่ดิน@if($city->city_id != 1)จังหวัด@endif{{$city->city_name}}</h5>
+            @if(Auth::user()->level == WEBMASTER)
+                <form class="form-inline" role="form" method="POST" action="{{url('/newCityAdmin/store')}}" style="margin-bottom: 65px;">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="ref" value="{{$city->city_id}}">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <select class="form-control" name="ref2">
+                                <option value="">ตำแหน่งว่าง</option>
+                                @foreach(App\User::where('level', '<=', 6)->get() as $user)
+                                    <option value="{{$user->id}}" @if(!empty($city->newCityAdmin)) @if($user->id == $city->newCityAdmin->user_id) selected @endif @endif>{{$user->email}} - {{$user->firstname}}  {{$user->lastname}}</option>
+                                @endforeach
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default" onclick="getPageLoading();">
+                                    <i class="fa fa-save"></i>
+                                    บันทึก
+                                </button>
+                            </span>
+                        </div>                        
+                    </div>
+                </form>
+                @if(Session::has('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="fa fa-check"> บันทึกข้อมูลสำเร็จ</span>
+                    </div>
+                @endif
+            @endif
+            <h5>ADMIN : @if(isset($city->newCityAdmin->user->id)) {{$city->newCityAdmin->user->prefix}} {{$city->newCityAdmin->user->firstname}}&nbsp&nbsp{{$city->newCityAdmin->user->lastname}} @else ว่าง @endif</h5>
+            <h5>โทรศัพท์ : @if($city->newCityAdmin->user->phone != '-') {{$city->newCityAdmin->user->phone}} @if($city->newCityAdmin->user->phone2 != '-') , {{$city->newCityAdmin->user->phone2}} @endif @endif</h5>
         </div>
         <div class="col-md-3 text-right">
             <h5 class="text-info" style="margin-top: 20px;">{{App\CalTime::getTimeNow()}}</h5>
@@ -126,6 +153,7 @@
     <script type="text/javascript">
         if(isMobile()){
             window.location = $('input[name=activeMobileView]').val();
+            getPageLoading();
         }
         setTimeout(function() {
             location.reload();
@@ -146,5 +174,8 @@
             if(hour < 10) hour = '0'+hour;
             $('#clock').text(hour+':'+min+':'+sec);
         }, 1000);
+        function getPageLoading(){
+            $('#pageLoading').css('display','block');
+        }
     </script>
 @endsection

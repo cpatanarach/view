@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -35,5 +38,10 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    protected function sendResetResponse($response){
+        Log::info(\Request::ip().'['.Auth::user()->email.']-> reset password.');
+        return redirect($this->redirectPath())
+                            ->with('status', trans($response));
     }
 }

@@ -148,14 +148,19 @@
                             <li><a href="{{url('/login')}}">เข้าสู่ระบบ</a></li>
                         @else
                             <li class="dropdown dol-dropdown-user">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> <span class="text-for-mobile">{{Auth::user()->firstname}}</span></a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i @if(Auth::user()->level == WEBMASTER) class="fa fa-user-secret" @else class="fa fa-user-circle" @endif></i> <span class="text-for-mobile">{{Auth::user()->firstname}}</span></a>
                               <ul class="dropdown-menu dol-dropdown-user-menu">
                                 <li><a href="#"><i class="fa fa-lock"></i><span>เปลี่ยนรหัสผ่าน</span></a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i><span>เปลี่ยนอีเมล</span></a></li>
                                 <li><a href="#"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
                                 <li role="separator" class="divider"></li>
                                 @if(!empty(Auth::user()->newCityAdmin))
-                                    <li><a href="{{url('/linkHome')}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
+                                    <li><a href="{{url('/linkCity/activeMobileView')}}/{{Auth::user()->newCityAdmin->city->city_id}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
+                                    <li role="separator" class="divider"></li>
+                                @endif
+                                @if(Auth::user()->level == WEBMASTER)
+                                    <!-- Webmaster's Menu -->
+                                    <li><a href="{{url('/home#')}}"><i class="fa fa-users"></i><span>จัดการผู้ใช้งาน</span></a></li>
                                     <li role="separator" class="divider"></li>
                                 @endif
                                 <li>
