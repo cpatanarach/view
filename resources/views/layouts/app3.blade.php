@@ -198,7 +198,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 widget">
-                    <h2><i class="fa fa-server"></i> บทความ</h2>
+                    <h2><i class="fa fa-server"></i> สถิติ</h2>
                     <article class="widget_content">
                         <ul>
                             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
