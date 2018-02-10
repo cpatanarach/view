@@ -43,4 +43,8 @@ Route::group(['middleware' => ['web']], function () {
 	Auth::routes();
 	//newCityAmdin
 	Route::post('/newCityAdmin/store','newCityAdminController@store');
+	//User
+	Route::get('/usermanagement/index', 'UserController@index');
+	Route::post('/usermanagement/update', 'UserController@update');
+	Route::post('/usermanagement/destroy', 'UserController@destroy');
 });

@@ -160,7 +160,7 @@
                                 @endif
                                 @if(Auth::user()->level == WEBMASTER)
                                     <!-- Webmaster's Menu -->
-                                    <li><a href="{{url('/home#')}}"><i class="fa fa-users"></i><span>จัดการผู้ใช้งาน</span></a></li>
+                                    <li><a href="{{url('/usermanagement/index')}}"><i class="fa fa-users"></i><span>จัดการผู้ใช้งาน</span></a></li>
                                     <li role="separator" class="divider"></li>
                                 @endif
                                 <li>
@@ -174,10 +174,10 @@
                               </ul>
                             </li>
                             @if(isset($searchEngine->enable))
-                                <form class="navbar-form navbar-right" action="{{$searchEngine->link}}" method="GET" style="margin-right: 0px;">
+                                <form type="searchEngine" class="navbar-form navbar-right" action="{{$searchEngine->link}}" method="GET" style="margin-right: 0px;">
                                     <div class="input-group">
                                         <input name="{{$searchEngine->inputName}}" type="text" class="form-control dol-search-input" placeholder="{{$searchEngine->placeHolder}}">
-                                        <span class="input-group-addon dol-search1" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                        <span onclick="$('form[type=searchEngine]').submit();" class="input-group-addon dol-search1" id="basic-addon1" style="cursor: pointer;"><i class="fa fa-search"></i></span>
                                     </div>
                                 </form>
                             @endif
@@ -198,7 +198,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 widget">
-                    <h2><i class="fa fa-comments"></i> บทความ</h2>
+                    <h2><i class="fa fa-server"></i> บทความ</h2>
                     <article class="widget_content">
                         <ul>
                             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
