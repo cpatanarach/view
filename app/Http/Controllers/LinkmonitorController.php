@@ -12,6 +12,7 @@ use App\User;
 use App\CheckProgram;
 use App\viewLInkAPI;
 use App\City;
+use Counter;
 class LinkmonitorController extends Controller
 {
 	public function __construct(){
@@ -25,6 +26,7 @@ class LinkmonitorController extends Controller
     	}
     }
     public function linkmonitor(Request $data){
+        Counter::showAndCount('home');
     	if(Auth::user()->level >= SUPERUSER){
     		if(!isset($data->list)){$data->list=25;}
     		if(!isset($data->search)){$data->search='';}

@@ -14,7 +14,7 @@ class UserController extends Controller
     function index(Request $request){
     	$search = $request->search;
     	if(Auth::user()->level == WEBMASTER){
-    		$user = User::where([['username','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])
+            $user = User::where([['username','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])
     				->orWhere([['email','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])
     				->orWhere([['firstname','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])
     				->orWhere([['lastname','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])

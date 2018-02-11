@@ -264,7 +264,7 @@
     @if((int)$programStatus->format('%h') > 0 || (int)$programStatus->format('%i') > 10)
         <div class="dol-alert">      
             <h2 style="color: #fff;"><i class="fa fa-warning"></i> เกิดข้อผิดพลาด โปรดติดต่อผู้ดูแลระบบ</h2>
-            <h4 style="color: #fff;">เซอร์วิสหยุดทำงาน : {{$programStatus->format('%h ชั่วโมง %i นาที %s วินาที')}}</h4>
+            <h4 style="color: #fff;">เซอร์วิสหยุดทำงาน : {{$programStatus->format('%a วัน %h ชั่วโมง %i นาที %s วินาที')}}</h4>
         </div>
     @endif
     <!-- Sound Beeb-->

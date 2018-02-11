@@ -41,12 +41,18 @@
                 @endif
             @endif
             <h5>ADMIN : @if(isset($city->newCityAdmin->user->id)) {{$city->newCityAdmin->user->prefix}} {{$city->newCityAdmin->user->firstname}}&nbsp&nbsp{{$city->newCityAdmin->user->lastname}} @else ว่าง @endif</h5>
-            <h5>โทรศัพท์ : @if($city->newCityAdmin->user->phone != '-') {{$city->newCityAdmin->user->phone}} @if($city->newCityAdmin->user->phone2 != '-') , {{$city->newCityAdmin->user->phone2}} @endif @endif</h5>
+            @if(isset($city->newCityAdmin->user->id))
+                <h5>โทรศัพท์ : @if($city->newCityAdmin->user->phone != '-') {{$city->newCityAdmin->user->phone}} @if($city->newCityAdmin->user->phone2 != '-') , {{$city->newCityAdmin->user->phone2}} @endif @endif</h5> 
+            @endif
         </div>
         <div class="col-md-3 text-right">
             <h5 class="text-info" style="margin-top: 20px;">{{App\CalTime::getTimeNow()}}</h5>
             <p class="text-info">เวลา <span id="clock">{{date('H:i:s')}}</span> น.</p>
-            <a href="{{url('/linkHome')}}" style="text-decoration: none;"><i class="fa fa-arrow-circle-o-left"></i> ย้อนกลับ</a>
+            @if(Auth::user()->level >= SUPERUSER)
+                <a href="{{url('/linkHome')}}" style="text-decoration: none;"><i class="fa fa-arrow-circle-o-left"></i> ย้อนกลับ</a>
+            @else
+                <a href="{{url('/home')}}" style="text-decoration: none;"><i class="fa fa-home"></i> หน้าหลัก</a>
+            @endif
         </div>
         <div class="col-md-12" style="padding: 0px;">
             <table class="table table-hover">

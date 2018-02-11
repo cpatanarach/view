@@ -155,12 +155,14 @@
                                 <li><a href="#"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
                                 <li role="separator" class="divider"></li>
                                 @if(!empty(Auth::user()->newCityAdmin))
-                                    <li><a href="{{url('/linkCity/activeMobileView')}}/{{Auth::user()->newCityAdmin->city->city_id}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
+                                    <li class="hideIfPC"><a href="{{url('/linkCity/activeMobileView')}}/{{Auth::user()->newCityAdmin->city->city_id}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
+                                    <li class="hideIfMobile"><a href="{{url('/linkCity')}}/{{Auth::user()->newCityAdmin->city->city_id}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>
                                     <li role="separator" class="divider"></li>
                                 @endif
                                 @if(Auth::user()->level == WEBMASTER)
                                     <!-- Webmaster's Menu -->
                                     <li><a href="{{url('/usermanagement/index')}}"><i class="fa fa-users"></i><span>จัดการผู้ใช้งาน</span></a></li>
+                                    <li><a href="{{url('/webmaster/logs')}}" target="_blank"><i class="fa fa-server"></i><span>Logs</span></a></li>
                                     <li role="separator" class="divider"></li>
                                 @endif
                                 <li>
@@ -197,16 +199,18 @@
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-5 widget">
-                    <h2><i class="fa fa-server"></i> สถิติ</h2>
+                <div class="col-md-4 widget">
+                    <h2><i class="fa fa-list-ul"></i> สถิติการใช้งานเว็บไซต์</h2>
                     <article class="widget_content">
                         <ul>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
-                            <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-                            <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</li>
+                            <li>เข้าชมทั้งหมด <span class="pull-right"> {{ Counter::allHits() }}</span></li>
+                            <li>7 วันล่าสุด <span class="pull-right"> {{ Counter::allHits(7) }}</span></li>
+                            <li>เดือนนี้ <span class="pull-right"> {{ App\selfCounter::where('created_at','LIKE','%' .date('Y').'-'. date('m') . '-%')->count() }}</span></li>
+                            <li>ปีนี้ <span class="pull-right"> {{ App\selfCounter::where('created_at','LIKE', date('Y') . '-%')->count() }}</span></li>
                      </ul>
                      </article>
                 </div>
+                <div class="col-md-1 widget"></div>
                 <div class="col-md-3 widget">
                     <h2><i class="fa fa-share-alt"></i> เว็บไซต์แนะนำ</h2>
                     <article class="widget_content">
@@ -216,7 +220,7 @@
                             <li><a target="_blank" href="http://www.dol.go.th/dol/index.php?option=com_payroll" class="no-decoration">สืบค้นการจ่ายเงินเดือน</a></li>
                             <li><a target="_blank" href="" class="no-decoration">สืบค้นรายการหักลดหย่อนภาษี</a></li>
                      </ul>
-                     </article>
+                    </article>
                 </div>
                 <div class="col-md-4 widget">
                     <h2><i class="fa fa-map-marker"></i> ติดต่อเรา</h2>

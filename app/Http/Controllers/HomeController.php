@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LinkData;
 use Illuminate\Support\Facades\Log;
+use Counter;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,7 @@ class HomeController extends Controller
         return view('welcome');
     }
     public function home(){
+        Counter::showAndCount('home');
         return view('home');
     }
     public function calTime(){

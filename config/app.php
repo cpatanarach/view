@@ -176,7 +176,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Hedii\ArtisanLogCleaner\ArtisanLogCleanerServiceProvider::class
+        Hedii\ArtisanLogCleaner\ArtisanLogCleanerServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
 
     ],
 
@@ -226,6 +228,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
 
     ],
 

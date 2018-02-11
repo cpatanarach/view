@@ -47,4 +47,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/usermanagement/index', 'UserController@index');
 	Route::post('/usermanagement/update', 'UserController@update');
 	Route::post('/usermanagement/destroy', 'UserController@destroy');
+	//Webmaster
+	Route::get('/webmaster/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });

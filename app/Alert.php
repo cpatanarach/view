@@ -26,7 +26,7 @@ class Alert extends Model
     }
     protected function hasComment($ref){
     	$linkDown = LinkDown::findOrFail($ref);
-    	if(count($linkDown->alert) >= 1){
+    	if(!empty($linkDown->alert)){
     		return true;
     	}else{
     		return false;

@@ -7,6 +7,7 @@ use App\User;
 use App\City;
 use App\CityTel;
 use Auth;
+use Counter;
 
 class LinkCityController extends Controller
 {
@@ -14,6 +15,7 @@ class LinkCityController extends Controller
         $this->middleware('auth');
     }
     protected function home(){
+        Counter::showAndCount('home');
         if(Auth::user()->level >= SUPERUSER){
             //Get All Province
             $allProvince = City::all();
