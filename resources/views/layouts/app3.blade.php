@@ -151,7 +151,7 @@
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i @if(Auth::user()->level == WEBMASTER) class="fa fa-user-secret" @else class="fa fa-user-circle" @endif></i> <span class="text-for-mobile">{{Auth::user()->firstname}}</span></a>
                               <ul class="dropdown-menu dol-dropdown-user-menu">
                                 <li><a href="#"><i class="fa fa-lock"></i><span>เปลี่ยนรหัสผ่าน</span></a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i><span>เปลี่ยนอีเมล</span></a></li>
+                                <li><a href="{{url('/requestEmailChange')}}"><i class="fa fa-envelope"></i><span>เปลี่ยนอีเมล</span></a></li>
                                 <li><a href="#"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
                                 <li role="separator" class="divider"></li>
                                 @if(!empty(Auth::user()->newCityAdmin))
