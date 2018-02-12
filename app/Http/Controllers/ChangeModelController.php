@@ -18,8 +18,17 @@ class ChangeModelController extends Controller
     public function change(Request $request){
     	$email = $this->EmailValidator($request->all());
     	if($email->passes()){
-    		$ref = changeModel::updateOrCreate(['user_id' => Auth::user()->id],
-    			['reference' => $request->email]);
+    		$user = Auth::user();
+            if(empty($user->changeEmail)){
+                $newEmail = new changeModel();
+                $newEmail->user_id = $user->id;
+                $newEmail->reference = $request->email;
+                $newEmail->save();
+            }else{
+                $user->changeEmail->reference = $request->email;
+                $user->changeEmail->save();
+            }
+            //create form to send Email
     		return redirect()->back()->with('success', 'ระบบได้ส่งลิงก์ยืนยันไปยัง '. $request->email. ' แล้ว กรุณาตรวจสอบอีเมล์เพื่อยืนยันการเปลี่ยนแปลง');
     	}else{
     		return redirect()->back()->withErrors($email)->withInput();

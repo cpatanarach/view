@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{url('/sendRequestEmailChange')}}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{url('/sendRequestEmailChange')}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

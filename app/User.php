@@ -36,6 +36,6 @@ class User extends Authenticatable
         return $this->hasOne('App\newCityAdmin','user_id','id');
     }
     protected function changeEmail(){
-        return $this->hasOne('App\changeModel');
+        return $this->hasOne('App\changeModel','user_id','id');
     }
 }
