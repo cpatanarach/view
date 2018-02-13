@@ -200,7 +200,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 widget">
-                    <h2><i class="fa fa-list-ul"></i> สถิติการใช้งานเว็บไซต์</h2>
+                    <h2><i class="fa fa-area-chart"></i> สถิติการใช้งานเว็บไซต์</h2>
                     <article class="widget_content">
                         <ul>
                             <li>เข้าชมทั้งหมด <span class="pull-right"> {{ Counter::allHits() }}</span></li>
@@ -216,9 +216,9 @@
                     <article class="widget_content">
                         <ul>
                             <li><a target="_blank" href="http://www.dol.go.th" class="no-decoration">กรมที่ดิน</a></li>
-                            <li><a target="_blank" href="http://nam.dol.go.th/personnel/Pages/default.aspx" class="no-decoration">กองการเจ้าหน้าที่ กรมที่ดิน</a></li>
+                            <li><a target="_blank" href="#" class="no-decoration">สำนักเทคโนโลยีสารสนเทศ</a></li>
+                            <li><a target="_blank" href="http://nam.dol.go.th/personnel/Pages/default.aspx" class="no-decoration">กองการเจ้าหน้าที่</a></li>
                             <li><a target="_blank" href="http://www.dol.go.th/dol/index.php?option=com_payroll" class="no-decoration">สืบค้นการจ่ายเงินเดือน</a></li>
-                            <li><a target="_blank" href="" class="no-decoration">สืบค้นรายการหักลดหย่อนภาษี</a></li>
                      </ul>
                     </article>
                 </div>
