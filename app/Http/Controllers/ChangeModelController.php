@@ -7,6 +7,7 @@ use App\User;
 use App\changeModel;
 use Validator;
 use Auth;
+use Mail;
 class ChangeModelController extends Controller
 {
     public function __construct(){
@@ -29,6 +30,10 @@ class ChangeModelController extends Controller
                 $user->changeEmail->save();
             }
             //create form to send Email
+            Mail::send('auth.mailToChange', ['user' => $user , 'ref' => bcrypt($user->changeEmail->reference)], function($message){
+
+			    $message->to('oper.dol.it@gmail.com', 'OPER')->subject('Accept Email');
+			});
     		return redirect()->back()->with('success', 'ระบบได้ส่งลิงก์ยืนยันไปยัง '. $request->email. ' แล้ว กรุณาตรวจสอบอีเมล์เพื่อยืนยันการเปลี่ยนแปลง');
     	}else{
     		return redirect()->back()->withErrors($email)->withInput();
