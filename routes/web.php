@@ -49,6 +49,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/usermanagement/destroy', 'UserController@destroy');
 	Route::get('/requestEmailChange', 'ChangeModelController@index');
 	Route::post('/sendRequestEmailChange', 'ChangeModelController@change');
+	Route::get('/email/accept', 'ChangeModelController@hasAccept');
 	//Webmaster
 	Route::get('/webmaster/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });

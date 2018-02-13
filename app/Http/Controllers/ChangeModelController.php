@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\OrderShipped;
 use App\User;
 use App\changeModel;
 use Validator;
@@ -25,19 +26,29 @@ class ChangeModelController extends Controller
                 $newEmail->user_id = $user->id;
                 $newEmail->reference = $request->email;
                 $newEmail->save();
+                $user->changeEmail = $newEmail;
             }else{
                 $user->changeEmail->reference = $request->email;
                 $user->changeEmail->save();
             }
             //create form to send Email
-            Mail::send('auth.mailToChange', ['user' => $user , 'ref' => bcrypt($user->changeEmail->reference)], function($message){
-
-			    $message->to('oper.dol.it@gmail.com', 'OPER')->subject('Accept Email');
-			});
+            Mail::to($user->changeEmail->reference)
+                ->send(new OrderShipped($user));
     		return redirect()->back()->with('success', 'ระบบได้ส่งลิงก์ยืนยันไปยัง '. $request->email. ' แล้ว กรุณาตรวจสอบอีเมล์เพื่อยืนยันการเปลี่ยนแปลง');
     	}else{
     		return redirect()->back()->withErrors($email)->withInput();
     	}
+    }
+    public function hasAccept(Request $request){
+        $user = Auth::user();
+        if(!empty($user->changeEmail->reference) && password_verify($user->changeEmail->reference, $request->ref)){
+            $user->email = $user->changeEmail->reference;
+            $user->save();
+            $user->changeEmail->delete();
+            return view('auth.acceptemailchange');
+        }else{
+            return view('error404');
+        }
     }
     protected function EmailValidator(array $data){
         return Validator::make($data, [
