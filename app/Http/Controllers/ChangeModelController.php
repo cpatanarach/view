@@ -9,6 +9,7 @@ use App\changeModel;
 use Validator;
 use Auth;
 use Mail;
+use Illuminate\Support\Facades\Log;
 class ChangeModelController extends Controller
 {
     public function __construct(){
@@ -42,6 +43,7 @@ class ChangeModelController extends Controller
     public function hasAccept(Request $request){
         $user = Auth::user();
         if(!empty($user->changeEmail->reference) && password_verify($user->changeEmail->reference, $request->ref)){
+            Log::alert('['.$request->ip().']Change email from ' . $user->email . ' to ' . $user->changeEmail->reference);
             $user->email = $user->changeEmail->reference;
             $user->save();
             $user->changeEmail->delete();

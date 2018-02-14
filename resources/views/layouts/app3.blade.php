@@ -234,7 +234,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 widget"><i class="fa fa-copyright"></i> 2018 | Computer Operation Section 
+                <div class="col-md-12 widget"><i class="fa fa-copyright"></i> 2018 | {{ config('app.name')}} 
                     <span class="pull-right hideIfMobile">Support  
                         <i class="fa fa-chrome"></i>
                         <i class="fa fa-firefox"></i>
