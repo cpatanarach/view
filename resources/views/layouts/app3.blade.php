@@ -152,7 +152,7 @@
                               <ul class="dropdown-menu dol-dropdown-user-menu">
                                 <li><a href="#"><i class="fa fa-lock"></i><span>เปลี่ยนรหัสผ่าน</span></a></li>
                                 <li><a href="{{url('/requestEmailChange')}}"><i class="fa fa-envelope"></i><span>เปลี่ยนอีเมล</span></a></li>
-                                <li><a href="#"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
+                                <li><a href="{{url('/user/self/profile')}}"><i class="fa fa-address-book"></i><span>โปรไฟล์</span></a></li>
                                 <li role="separator" class="divider"></li>
                                 @if(!empty(Auth::user()->newCityAdmin))
                                     <li class="hideIfPC"><a href="{{url('/linkCity/activeMobileView')}}/{{Auth::user()->newCityAdmin->city->city_id}}"><i class="fa fa-tasks"></i><span>สถานะเครือข่าย</span></a></li>

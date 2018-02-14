@@ -8,10 +8,10 @@ use App\User;
 
 class UserController extends Controller
 {
-    function __construct(){
+    public function __construct(){
     	$this->middleware('auth');
     }
-    function index(Request $request){
+    public function index(Request $request){
     	$search = $request->search;
     	if(Auth::user()->level == WEBMASTER){
             $user = User::where([['username','LIKE','%'.$search.'%'],['level', '<', WEBMASTER]])
@@ -24,7 +24,7 @@ class UserController extends Controller
     		return view('error404');
     	}
     }
-    function update(Request $request){
+    public function update(Request $request){
     	if(Auth::user()->level == WEBMASTER){
     		$user = User::findOrFail($request->ref);
     		$user->level = $request->ref2;
@@ -34,7 +34,7 @@ class UserController extends Controller
     		return view('error404');
     	}
     }
-    function destroy(Request $request){
+    public function destroy(Request $request){
     	if(Auth::user()->level == WEBMASTER){
     		$user = User::findOrFail($request->ref);
     		$user->delete();
