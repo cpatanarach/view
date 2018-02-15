@@ -22,7 +22,7 @@
                             <label for="username" class="col-md-4 control-label">รหัสบัตรประจำตัว 13 หลัก</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control bfh-phone" name="username" value="@if(!empty(old('username'))){{ old('username') }}@else {{Auth::user()->username}} @endif" data-format="ddddddddddddd" placeholder="เลขประจำตัวประชาชน 13 หลัก" required autofocus>
+                                <input id="username" type="text" class="form-control bfh-phone" name="username" value="@if(!empty(old('username'))){{old('username')}}@else{{Auth::user()->username}}@endif" data-format="ddddddddddddd" placeholder="เลขประจำตัวประชาชน 13 หลัก" required autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -49,7 +49,7 @@
                             <label for="firstname" class="col-md-4 control-label">ชื่อ</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="@if(!empty(old('firstname'))){{ old('firstname') }}@else {{Auth::user()->firstname}} @endif" placeholder="ชื่อ" required>
+                                <input id="firstname" type="text" class="form-control" name="firstname" value="@if(!empty(old('firstname'))){{old('firstname')}}@else{{Auth::user()->firstname}}@endif" placeholder="ชื่อ" required>
 
                                 @if ($errors->has('firstname'))
                                     <span class="help-block">
@@ -63,7 +63,7 @@
                             <label for="lastname" class="col-md-4 control-label">สกุล</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="@if(!empty(old('lastname'))){{ old('lastname') }}@else {{Auth::user()->lastname}} @endif" placeholder="นามสกุล" required>
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="@if(!empty(old('lastname'))){{old('lastname')}}@else{{Auth::user()->lastname}}@endif" placeholder="นามสกุล" required>
 
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -77,7 +77,7 @@
                             <label for="phone" class="col-md-4 control-label">โทรศัทพ์</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control bfh-phone" data-format="dd dddd dddd" name="phone" value="@if(!empty(old('phone'))){{ old('phone') }}@else {{Auth::user()->phone}} @endif" placeholder="หมายเลขโทรศัพท์" required>
+                                <input id="phone" type="text" class="form-control bfh-phone" data-format="dd dddd dddd" name="phone" value="@if(!empty(old('phone'))){{old('phone')}}@else{{Auth::user()->phone}}@endif" placeholder="หมายเลขโทรศัพท์" required>
 
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
@@ -90,7 +90,7 @@
                             <label for="phone2" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
-                                <input id="phone2" type="text" class="form-control bfh-phone" data-format="dd dddd dddd" name="phone2" value="@if(!empty(old('phone2'))){{ old('phone2') }}@else {{Auth::user()->phone2}} @endif" placeholder="หมายเลขสำรอง" required>
+                                <input id="phone2" type="text" class="form-control bfh-phone" data-format="dd dddd dddd" name="phone2" value="@if(!empty(old('phone2'))){{old('phone2')}}@else{{Auth::user()->phone2}}@endif" placeholder="หมายเลขสำรอง" required>
 
                                 @if ($errors->has('phone2'))
                                     <span class="help-block">
