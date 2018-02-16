@@ -18,6 +18,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/calTime', 'HomeController@calTime');
     Route::get('/home', 'HomeController@home');
+    Route::get('/contactUs', 'HomeController@contactUs');
     //AlertController
     Route::get('/alert/wait', 'AlertController@wait');
     //LinkmonitorController

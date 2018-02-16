@@ -83,7 +83,7 @@
                         <li class="@if(!empty($menu_home)) active @endif"><a href="{{url('/home')}}"><i class="fa fa-home"></i> หน้าหลัก <span class="sr-only">(current)</span></a></li>
                         <li><a href="#"><i class="fa fa-share-alt"></i> ข่าวประชาสัมพันธ์ </a></li>
                         <li><a href="#"><i class="fa fa-users"></i> บุคลากร </a></li>
-                        <li><a href="#"><i class="fa fa-map-marker"></i> ติดต่อเรา </a></li>
+                        <li><a href="{{url('/contactUs')}}"><i class="fa fa-map-marker"></i> ติดต่อเรา </a></li>
                       </ul>
                         
                       <ul class="nav navbar-nav navbar-right">

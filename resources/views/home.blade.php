@@ -101,7 +101,37 @@
     			</div>
     			<!-- Small item-->
     		</div>
-        	<div class="space-30 col-md-12"></div>
+        	<div class="space-30 col-md-12 line-orange"></div>
+
+            <div class="col-md-12">     
+                <h3 class="text-orange">ข่าวประชาสัมพันธ์
+                    <a href="#" class="btn btn-sm btn-dark btn-super-curve pull-right">ดูทั้งหมด</a>
+                </h3>   
+            </div>
+            <!-- News -->
+            <table class="table">
+                <tr>
+                    <td>1</td>
+                    <td><a href="#" class="no-decoration">ชื่อเรื่อง.......................................................</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="#" class="no-decoration">ชื่อเรื่อง.......................................................</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="#" class="no-decoration">ชื่อเรื่อง.......................................................</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="#" class="no-decoration">ชื่อเรื่อง.......................................................</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><a href="#" class="no-decoration">ชื่อเรื่อง.......................................................</a></td>
+                </tr>
+            </table>
+
     	</div>
     </div>
 </div>

@@ -22,6 +22,9 @@ class HomeController extends Controller
         Counter::showAndCount('home');
         return view('home');
     }
+    public function contactUs(){
+        return view('contact');
+    }
     public function calTime(){
         return view('cal_time');
     }
