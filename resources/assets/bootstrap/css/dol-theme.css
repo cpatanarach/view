@@ -1,3 +1,21 @@
+.text-concat {
+	margin-top: 5px;
+	font-size: 12px;
+	position: relative;
+	display: inline-block;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 3.6em; /* (Number of lines you want visible) * (line-height) */
+	line-height: 1.2em;
+
+}
+.inline-nowarp{
+	padding-right: 10px;
+	white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
 /* Makes images fully responsive */
 .line-orange{
 	border-bottom: solid #412008;

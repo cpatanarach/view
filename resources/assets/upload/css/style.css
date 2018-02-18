@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS Example
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+body {
+  padding-top: 60px;
+}
+.input-drop-area {
+    border-color: lightgray;
+    border: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    min-height: 90px;
+    border-style: dashed dashed dashed dashed;
+    border-radius: 10px;
+    background: rgba(204,204,204,.1);
+}

@@ -72,4 +72,8 @@ class CalTime extends Model
     	$timeNow = new DateTime();
     	return 'วัน'.$this->thaiDate[$timeNow->format('D')].'ที่ '. $timeNow->format('j').' '.$this->thaiMonth[$timeNow->format('M')] .' '.($timeNow->format('Y')+543);
     }
+    protected function dateThai($date){
+        $output = new DateTime($date);
+        return $output->format('j').' '.$this->thaiMonth[$output->format('M')].' '.($output->format('Y')+543);
+    }
 }

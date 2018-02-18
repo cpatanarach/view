@@ -19,6 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/calTime', 'HomeController@calTime');
     Route::get('/home', 'HomeController@home');
     Route::get('/contactUs', 'HomeController@contactUs');
+    Route::get('/home/gallery/{id}', 'HomeController@gallery');
     //AlertController
     Route::get('/alert/wait', 'AlertController@wait');
     //LinkmonitorController
@@ -55,4 +56,17 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/user/self/profile/update', 'mySelfController@updateProfile');
 	//Webmaster
 	Route::get('/webmaster/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+	//Gallery
+	Route::get('/gallery/index', 'GalleryController@index');
+	Route::get('/gallery/edit/{id}', 'GalleryController@edit');
+	Route::post('/gallery/update', 'GalleryController@update');
+	Route::post('/gallery/store', 'GalleryController@store');
+	Route::post('/gallery/destroy', 'GalleryController@destroy');
+	Route::get('/gallery/image/destroy/{id}', 'GalleryController@destroyImage');
+	Route::get('/gallery/cover/{galery_id}/{image_id}', 'GalleryController@setCover');
+	//Image Upload
+	Route::get('/gallery/upload/{id}', 'ImagesController@index');
+	Route::post('/gallery/receive/{id}', 'ImagesController@receive');
+	//Resource
+	Route::any('/public/images/{image}', 'ResourceController@secure');
 });
