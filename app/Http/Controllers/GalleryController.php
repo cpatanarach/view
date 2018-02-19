@@ -19,7 +19,7 @@ class GalleryController extends Controller
 	public function index(Request $request){
 		if(Auth::user()->level >= ADMIN){
 			$galleries = Gallery::where('title','LIKE','%'.$request->search.'%')
-								->orWhere('discription','LIKE','%'.$request->search.'%')->orderBy('action', 'asc')->paginate(15);
+								->orWhere('discription','LIKE','%'.$request->search.'%')->orderBy('action', 'desc')->paginate(15);
 			$galleries->appends(request()->input())->links();
 			return view('galleries.index')->with('galleries', $galleries)->with('searchEngine', $this->getSearchGalleryEngine());
 		}else{

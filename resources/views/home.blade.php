@@ -8,7 +8,7 @@
     			<h3 class="text-orange">กิจกรรมฝ่ายฯ
     				<span class="text-muted hideIfMobile" style="font-size: 14px; margin-left: 20px;"><span class="badge">วันนี้</span> {{App\CalTime::getTimeNow()}}</span>
 
-    				<a href="#" class="btn btn-sm btn-dark btn-super-curve pull-right">ดูกิจกรรมทั้งหมด</a>
+    				<a href="{{url('/home/galleries')}}" class="btn btn-sm btn-dark btn-super-curve pull-right">ดูกิจกรรมทั้งหมด</a>
                     @if(Auth::check() && Auth::user()->level >= 6)
                         <a href="{{url('/gallery/index')}}" class="btn btn-sm btn-default btn-super-curve pull-right hideIfMobile" style="margin-right: 10px;"><span class="fa fa-cog"></span> ตั้งค่า</a>
                     @endif
@@ -31,8 +31,8 @@
 					      <!-- Wrapper for slides -->
 					<div class="carousel-inner">
                         @forelse($galleries as $i => $gallery)
-                            @if($i > 5)
-        				        <div class="item @if($i == $gCount-1) active @endif">
+                            @if($i <= 3)
+        				        <div class="item @if($i == 0) active @endif">
                                     <img src="@if(!empty($gallery->cover)){{url('/public/images')}}/{{$gallery->cover->image->id}}@else{{url('/resources/images/public/thumb.jpg')}}@endif" alt="...">
                                     <div class="carousel-caption">
                                         <h4 class="inline-nowarp"><a href="{{url('/home/gallery')}}/{{$gallery->id}}">{{$gallery->title}}</a></h4>
@@ -59,10 +59,10 @@
     		<div class="col-md-6 hideIfMobile">
     			<!-- Small item-->
                 @forelse($galleries2 as $i2 => $gallery2)
-                    @if($i2 == 3)
+                    @if($i2 == 7)
                         <div class="col-md-12 space-30"></div>
                     @endif
-                    @if($i2 <= 5)
+                    @if($i2 > 3)
             			<div class="col-md-4">
             				<img src="@if(!empty($gallery2->cover)){{url('/public/images')}}/{{$gallery2->cover->image->id}}@else{{url('/resources/images/public/thumb.jpg')}}@endif" alt="..." class="col-md-12 no-padding img-thumbnail">
             				<a href="{{url('/home/gallery')}}/{{$gallery2->id}}" class="text-muted no-decoration text-concat"><span class="badge">{{App\Caltime::dateThai($gallery2->action)}}</span> {{$gallery2->title}} </a>
@@ -70,8 +70,8 @@
                     @endif
     			@empty
                         <div class="col-md-4">
-                            <img src="http://academic.udru.ac.th/~culture/wp-content/uploads/2016/04/no-thumbnail.png" alt="..." class="col-md-12 no-padding img-thumbnail">
-                            <a href="#" class="text-muted">กิจกรรม 1 ...........................................</a>
+                            <img src="{{url('/resources/images/public/thumb.jpg')}}" alt="..." class="col-md-12 no-padding img-thumbnail">
+                            <a href="#" class="text-muted">ไม่พบกิจกรรม</a>
                         </div>
                 @endforelse    			
     			<!-- Small item-->

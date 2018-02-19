@@ -12,23 +12,7 @@
     <title>{{ config('app.name', 'Oper') }}</title>
     <link rel="icon" href="{{url('/resources/images/public/oper.ico')}}"/>
     @yield('meta')
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
     <!-- Styles -->
-    <!-- Bootstrap form web
-    <link href="{{ url('/resources/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url('/resources/assets/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">  
-    <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">  
-    -->
     <link href="{{ url('/public/css/app.css') }}" rel="stylesheet">  
     <link href="{{ url('/resources/assets/bootstrap/css/dol-theme.css') }}" rel="stylesheet">
     <link href="{{ url('/resources/assets/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">

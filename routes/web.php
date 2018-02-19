@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@home');
     Route::get('/contactUs', 'HomeController@contactUs');
     Route::get('/home/gallery/{id}', 'HomeController@gallery');
+    Route::get('/home/galleries','HomeController@galleries');
     //AlertController
     Route::get('/alert/wait', 'AlertController@wait');
     //LinkmonitorController

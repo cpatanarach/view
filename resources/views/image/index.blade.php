@@ -22,7 +22,7 @@
         <div class="panel-body text-center">
             <a href="{{url('/gallery/upload')}}/{{$gallery->id}}" class="btn btn-super-curve btn-default" onclick="getPageLoading();"><i class="fa fa-refresh"></i> Refresh</a>
 
-            <a href="{{url('/gallery/index')}}" class="btn btn-super-curve btn-default" onclick="getPageLoading();"><i class="fa fa-camera-retro"></i> Gallery</a>
+            <a href="{{url('/home/gallery')}}/{{$gallery->id}}" class="btn btn-super-curve btn-default" onclick="getPageLoading();"><i class="fa fa-eye"></i> Preview</a>
 
             <table class="table text-left" style="margin-top: 10px;">
                 @forelse($gallery->images as $image)

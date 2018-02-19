@@ -20,9 +20,9 @@ class HomeController extends Controller
         return view('welcome');
     }
     public function home(){
-        $galleries = Gallery::where('publish','=',1)->orderBy('action', 'asc')->take(10)->get();
+        $galleries = Gallery::where('publish','=',1)->orderBy('action', 'desc')->take(10)->get();
         Counter::showAndCount('home');
-        return view('home')->with('galleries', $galleries)->with('galleries2', $galleries)->with('gCount', count($galleries));
+        return view('home')->with('galleries', $galleries)->with('galleries2', $galleries);
     }
     public function contactUs(){
         return view('contact');
@@ -31,10 +31,23 @@ class HomeController extends Controller
         return view('cal_time');
     }
     public function gallery($id){
-        return view('error404');
+        return view('gallery')->with('gallery', Gallery::findOrFail($id));
     }
     public function galleries(Request $request){
-        return view('error404');
+        $search = $request->search;
+        $galleries = Gallery::where([['publish','=',1], ['title','LIKE','%'.$search.'%']])
+                    ->orWhere([['publish','=',1], ['discription','LIKE','%'.$search.'%']])
+                    ->orderBy('action', 'desc')->paginate(18);
+        $galleries->appends(request()->input())->links();
+        return view('galleries')->with('galleries', $galleries)->with('searchEngine', $this->getSearchGalleryEngine());
+    }
+    protected function getSearchGalleryEngine(){
+        $searchEngine = new \stdClass();
+        $searchEngine->link = url('/home/galleries');
+        $searchEngine->placeHolder = 'ค้นหากิจกรรม...';
+        $searchEngine->inputName = 'search';
+        $searchEngine->enable = true;
+        return $searchEngine;
     }
 
     //Test Query

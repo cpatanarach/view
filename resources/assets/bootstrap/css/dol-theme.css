@@ -1,3 +1,16 @@
+.pagination>li>a, .pagination>li>span {
+    color: #e9721b;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #e9721b;
+    border-color: #e9721b;
+}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    color: #8f4b18;
+}
+.line-light-black {
+    border-bottom: 3px solid #aca59f;
+}
 .text-concat {
 	margin-top: 5px;
 	font-size: 12px;
